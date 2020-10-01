@@ -33,6 +33,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 # VIEW
+from django.shortcuts import render
 
 def index(request, name=None):
     return render(request, "index.html", {"name": name})
@@ -40,7 +41,10 @@ def index(request, name=None):
 
 
 # URLS
-
+from django.conf.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path("", index),
     path("<str:name>", index, name="named")
